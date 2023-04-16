@@ -185,6 +185,7 @@ class Calculator(Frame):
             ans = round((e/28.35),2)
             self.entry.insert(END, " Gr = "+str(ans)+" Oz")
         self.entry.configure(state="disabled")
+
     #Convert Ounces into Grams
     def convert_OztoGr(self):
         self.entry.configure(state="normal")
@@ -254,8 +255,63 @@ class Calculator(Frame):
             ans = round ((e*29.574),2)
             self.entry.insert(END, " Oz = "+str(ans)+" Mil")
         self.entry.configure(state="disabled")
+        
+    #Convert Kilometers to Miles
+    def convert_KmtoMi(self):
+        self.entry.configure(state="normal")
+        e = self.entry.get()
+        try:
+            e = float(self.entry.get())
+        except Exception as ex:
+            self.entry.delete(0,END)
+            self.entry.insert(0, "Invalid Input")
+        else:
+            ans = round ((e/1.609),2)
+            self.entry.insert(END, " Km = "+str(ans)+" Mi")
+        self.entry.configure(state="disabled")
 
-    
+    #Convert Miles to Kilometers
+    def convert_MitoKm(self):
+        self.entry.configure(state="normal")
+        e = self.entry.get()
+        try:
+            e = float(self.entry.get())
+        except Exception as ex:
+            self.entry.delete(0,END)
+            self.entry.insert(0, "Invalid Input")
+        else:
+            ans = round ((e*1.609),2)
+            self.entry.insert(END, " Mi = "+str(ans)+" Km")
+        self.entry.configure(state="disabled")
+
+    #Convert Kilograms to Pounds
+    def convert_KilotoLbs(self):
+        self.entry.configure(state="normal")
+        e = self.entry.get()
+        try:
+            e = float(self.entry.get())
+        except Exception as ex:
+            self.entry.delete(0,END)
+            self.entry.insert(0, "Invalid Input")
+        else:
+            ans = round ((e*2.205),2)
+            self.entry.insert(END, " Kilo = "+str(ans)+" Lbs")
+        self.entry.configure(state="disabled")
+
+    #Convert Pounds to Kilograms
+    def convert_LbstoKilo(self):
+        self.entry.configure(state="normal")
+        e = self.entry.get()
+        try:
+            e = float(self.entry.get())
+        except Exception as ex:
+            self.entry.delete(0,END)
+            self.entry.insert(0, "Invalid Input")
+        else:
+            ans = round ((e/2.205),2)
+            self.entry.insert(END, " Lbs = "+str(ans)+" Kilo")
+        self.entry.configure(state="disabled")
+
     def flash(self,btn):
         """
         Flashes a corresponding button when key is pressed.
@@ -413,16 +469,16 @@ class Calculator(Frame):
         self.tan_bttn = Button(self, text="Ft -> M", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_FttoM())
         self.tan_bttn.grid(row=2, column=7)
 
-        self.tan_bttn = Button(self, text="Km -> Mi", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.add_chr('tan'))
+        self.tan_bttn = Button(self, text="Km -> Mi", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_KmtoMi())
         self.tan_bttn.grid(row=2, column=8)
 
-        self.tan_bttn = Button(self, text="Mi -> Km", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.add_chr('tan'))
+        self.tan_bttn = Button(self, text="Mi -> Km", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_MitoKm())
         self.tan_bttn.grid(row=2, column=9)
         
-        self.tan_bttn = Button(self, text="Kg -> Lbs", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.add_chr('tan'))
+        self.tan_bttn = Button(self, text="Kg -> Lbs", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_KilotoLbs())
         self.tan_bttn.grid(row=3, column=6)
 
-        self.tan_bttn = Button(self, text="Lbs -> Kg", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.add_chr('tan'))
+        self.tan_bttn = Button(self, text="Lbs -> Kg", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_LbstoKilo())
         self.tan_bttn.grid(row=3, column=7)
 
         self.tan_bttn = Button(self, text="Gr -> Oz", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_GrtoOz())
