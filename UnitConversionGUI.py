@@ -228,8 +228,8 @@ class Calculator(Frame):
             self.entry.insert(END, " Lit = "+str(ans)+" Gal")
         self.entry.configure(state="disabled")
 
-    #Convert Mililiters into Ounces
-    def convert_MiltoOz(self):
+    #Convert Mililiters into Cups
+    def convert_MiltoCup(self):
         self.entry.configure(state="normal")
         e = self.entry.get()
         try:
@@ -238,12 +238,12 @@ class Calculator(Frame):
             self.entry.delete(0,END)
             self.entry.insert(0, "Invalid Input")
         else:
-            ans = round((int(e)/29.574),2)
-            self.entry.insert(END, " Mil = "+str(ans)+" Oz")
+            ans = round((int(e)/236.588),2)
+            self.entry.insert(END, " Mil = "+str(ans)+" Cup")
         self.entry.configure(state="disabled")
 
-    #Convert Ounces into Mililiters   
-    def convert_OztoMil(self):
+    #Convert Cups into Mililiters   
+    def convert_CuptoMil(self):
         self.entry.configure(state="normal")
         e = self.entry.get()
         try:
@@ -252,8 +252,8 @@ class Calculator(Frame):
             self.entry.delete(0,END)
             self.entry.insert(0, "Invalid Input")
         else:
-            ans = round ((e*29.574),2)
-            self.entry.insert(END, " Oz = "+str(ans)+" Mil")
+            ans = round ((e*236.588),2)
+            self.entry.insert(END, " Cup = "+str(ans)+" Mil")
         self.entry.configure(state="disabled")
         
     #Convert Kilometers to Miles
@@ -493,12 +493,11 @@ class Calculator(Frame):
         self.tan_bttn = Button(self, text="Gal -> Lit", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_GaltoLit())
         self.tan_bttn.grid(row=4, column=7)
 
-        self.tan_bttn = Button(self, text="Oz -> Mil", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_OztoMil())
+        self.tan_bttn = Button(self, text="Cup -> Mil", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_CuptoMil())
         self.tan_bttn.grid(row=4, column=8)
 
-        self.tan_bttn = Button(self, text="Mil -> Oz", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_MiltoOz())
+        self.tan_bttn = Button(self, text="Mil -> Cup", width=9, height=4, font=my_font, bg='LightGreen', command=lambda: self.convert_MiltoCup())
         self.tan_bttn.grid(row=4, column=9)
-
 
 
 root = Tk()
