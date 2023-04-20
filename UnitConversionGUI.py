@@ -312,6 +312,21 @@ class Calculator(Frame):
             self.entry.insert(END, " Lbs = "+str(ans)+" Kilo")
         self.entry.configure(state="disabled")
 
+    #Convert to %
+    def convert_toPercent(self):
+        self.entry.configure(state="normal")
+        e = self.entry.get()
+        try:
+            ans = eval(e)
+        except Exception as ex:
+            self.entry.delete(0,END)
+            self.entry.insert(0, "Invalid Input")
+        else:
+            e = float(ans)
+            ans = round ((e*100))
+            self.entry.insert(END, " = "+str(ans)+"%")
+        self.entry.configure(state="disabled")
+
     def flash(self,btn):
         """
         Flashes a corresponding button when key is pressed.
@@ -365,7 +380,7 @@ class Calculator(Frame):
         master.bind("1", lambda event, char="1", btn=self.one_bttn: self.add_chr(char, btn))
         master.bind("0", lambda event, char="0", btn=self.zero_bttn: self.add_chr(char, btn))
         master.bind("*", lambda event, char="×", btn=self.mult_bttn: self.add_chr(char, btn))
-        master.bind("/", lambda event, char="÷", btn=self.div_bttn: self.add_chr(char, btn))
+        master.bind("/", lambda event, char="/", btn=self.div_bttn: self.add_chr(char, btn))
         master.bind("^", lambda event, char="^", btn=self.sqr_bttn: self.add_chr(char, btn))
         master.bind("%", lambda event, char="%", btn=self.mod_bttn: self.add_chr(char, btn))
         master.bind(".", lambda event, char=".", btn=self.dec_bttn: self.add_chr(char, btn))
@@ -400,10 +415,10 @@ class Calculator(Frame):
         self.sub_bttn = Button(self, text="-", width=9, height=4, bg='LightBlue', font=my_font, command=lambda: self.add_chr('-'))
         self.sub_bttn.grid(row=3, column=3)
 
-        self.div_bttn = Button(self, text="÷", width=9, height=4, bg='LightBlue', font=my_font, command=lambda: self.add_chr('/'))
+        self.div_bttn = Button(self, text="/", width=9, height=4, bg='LightBlue', font=my_font, command=lambda: self.add_chr('/'))
         self.div_bttn.grid(row=1, column=3)
 
-        self.mod_bttn = Button(self, text="%", width=9, height=4, font=my_font, command=lambda: self.add_chr('%'))
+        self.mod_bttn = Button(self, text="%", width=9, height=4, font=my_font, command=lambda: self.convert_toPercent())
         self.mod_bttn.grid(row=4, column=2)
 
         self.seven_bttn = Button(self, text="7", width=9, height=4, font=my_font, command=lambda: self.add_chr(7))
