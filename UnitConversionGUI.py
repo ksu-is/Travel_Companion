@@ -3,7 +3,7 @@ from math import sqrt as sqr
 
 class Calculator(Frame):
     """
-    An example of a calculator app developed using the 
+    An calculator app developed using the 
     Tkinter GUI.
     """
 
@@ -380,7 +380,7 @@ class Calculator(Frame):
         master.bind("1", lambda event, char="1", btn=self.one_bttn: self.add_chr(char, btn))
         master.bind("0", lambda event, char="0", btn=self.zero_bttn: self.add_chr(char, btn))
         master.bind("*", lambda event, char="×", btn=self.mult_bttn: self.add_chr(char, btn))
-        master.bind("/", lambda event, char="/", btn=self.div_bttn: self.add_chr(char, btn))
+        master.bind("÷", lambda event, char="÷", btn=self.div_bttn: self.add_chr(char, btn))
         master.bind("^", lambda event, char="^", btn=self.sqr_bttn: self.add_chr(char, btn))
         master.bind("%", lambda event, char="%", btn=self.mod_bttn: self.add_chr(char, btn))
         master.bind(".", lambda event, char=".", btn=self.dec_bttn: self.add_chr(char, btn))
@@ -415,7 +415,7 @@ class Calculator(Frame):
         self.sub_bttn = Button(self, text="-", width=9, height=4, bg='LightBlue', font=my_font, command=lambda: self.add_chr('-'))
         self.sub_bttn.grid(row=3, column=3)
 
-        self.div_bttn = Button(self, text="/", width=9, height=4, bg='LightBlue', font=my_font, command=lambda: self.add_chr('/'))
+        self.div_bttn = Button(self, text="÷", width=9, height=4, bg='LightBlue', font=my_font, command=lambda: self.add_chr('/'))
         self.div_bttn.grid(row=1, column=3)
 
         self.mod_bttn = Button(self, text="%", width=9, height=4, font=my_font, command=lambda: self.convert_toPercent())
